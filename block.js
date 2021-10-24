@@ -10,10 +10,11 @@ export class Block {
         this.maxX = this.width + this.x;
         this.maxY = this.height + this.y;
 
-        document.addEventListener('mousemove', this.mouseMove.bind(this), false);
+        document.addEventListener('mousemove', this.move.bind(this), false);
+        document.addEventListener('touchmove', this.move.bind(this), false);
     }
 
-    mouseMove(e) {
+    move(e) {
         this.x = e.clientX - this.width / 2;
         this.y = e.clientY - this.height / 2;
 
