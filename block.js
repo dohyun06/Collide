@@ -3,29 +3,17 @@ export class Block {
         this.stageWidth = stageWidth;
         this.stageHeight = stageHeight;
         this.diameter = radius * 2;
-
-        if (
-            /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-                navigator.userAgent
-            )
-        ) {
-            this.width = 200;
-            this.height = 100;
-        } else {
-            this.width = 400;
-            this.height = 200;
-        }
-
+        this.width = 400;
+        this.height = 200;
         this.x = this.stageWidth / 2 - this.width;
         this.y = this.stageHeight / 2 - this.width;
         this.maxX = this.width + this.x;
         this.maxY = this.height + this.y;
 
-        document.addEventListener('mousemove', this.move.bind(this), false);
-        document.addEventListener('touchmove', this.move.bind(this), false);
+        document.addEventListener('mousemove', this.mouseMove.bind(this), false);
     }
 
-    move(e) {
+    mouseMove(e) {
         this.x = e.clientX - this.width / 2;
         this.y = e.clientY - this.height / 2;
 
