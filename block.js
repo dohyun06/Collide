@@ -3,8 +3,17 @@ export class Block {
         this.stageWidth = stageWidth;
         this.stageHeight = stageHeight;
         this.diameter = radius * 2;
-        this.width = 400;
-        this.height = 200;
+
+        if (navigator.platform) {
+            if (0 > 'win16|win32|win64|mac'.indexOf(navigator.platform.toLowerCase())) {
+                this.width = 200;
+                this.height = 100;
+            } else {
+                this.width = 400;
+                this.height = 200;
+            }
+        }
+
         this.x = this.stageWidth / 2 - this.width;
         this.y = this.stageHeight / 2 - this.width;
         this.maxX = this.width + this.x;
