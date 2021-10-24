@@ -4,14 +4,16 @@ export class Block {
         this.stageHeight = stageHeight;
         this.diameter = radius * 2;
 
-        if (navigator.platform) {
-            if (0 > 'win16|win32|win64|mac'.indexOf(navigator.platform.toLowerCase())) {
-                this.width = 200;
-                this.height = 100;
-            } else {
-                this.width = 400;
-                this.height = 200;
-            }
+        if (
+            /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+                navigator.userAgent
+            )
+        ) {
+            this.width = 200;
+            this.height = 100;
+        } else {
+            this.width = 400;
+            this.height = 200;
         }
 
         this.x = this.stageWidth / 2 - this.width;
